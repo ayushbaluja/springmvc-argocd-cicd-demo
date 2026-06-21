@@ -1,1 +1,22 @@
 apiVersion: apps/v1
+kind: Depoloyment
+metadata:
+  name: springmvc-cicd-argo
+  labels:
+    app: springmvc-cicd-argo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: springmvc-cicd-argo
+    template:
+      metadata:
+        labels:
+          app: springmvc-cicd-argo
+      spec:
+        containers:
+          - name: springmvc-cicd-argo
+            image: vishravi1975/springmvc-cicd-argo:latest
+            ports:
+              -containerPort: 8080
+          
