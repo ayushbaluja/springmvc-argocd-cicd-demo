@@ -16,7 +16,7 @@ spec:
     spec:
         containers:
           - name: springmvc-cicd-argo
-            image: vishravi1975/springmvc-cicd-argo:latest
+            image: vishravi1975/springmvc-cicd-argo:v1
             ports:
               - containerPort: 8080
           
