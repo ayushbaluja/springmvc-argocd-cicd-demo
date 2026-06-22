@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "vishravi1975/springmvc-cicd-argo"
-        GITOPS_REPO = "https://github.com/vishravi2016/springmvc-argocd-cicd-demo.git"
+        DOCKER_IMAGE = "ayushbaluja/springmvc-cicd-argo"
+        GITOPS_REPO = "https://github.com/ayushbaluja/springmvc-argocd-cicd-demo.git"
         GITOPS_BRANCH = "main"
     }
 
@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout Application Code') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/vishravi2016/springmvc-argocd-cicd-demo.git'
+                    url: 'https://github.com/ayushbaluja/springmvc-argocd-cicd-demo.git'
             }
         }
 
@@ -35,7 +35,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
+                    credentialsId: 'token-jenkins',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
@@ -57,7 +57,7 @@ pipeline {
                 )]) {
                     sh """
                     rm -rf springmvc-argocd-cicd-demo
-                    git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/vishravi2016/springmvc-argocd-cicd-demo.git
+                    git clone https://${GIT_USER}:${GIT_TOKEN}@github.com/ayushbaluja/springmvc-argocd-cicd-demo.git
 
                     cd springmvc-argocd-cicd-demo
 
