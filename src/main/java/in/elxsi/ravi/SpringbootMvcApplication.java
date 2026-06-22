@@ -19,7 +19,7 @@ public class SpringbootMvcApplication {
     @GetMapping("/home")
     public String home() {
 
-        return "Version 2";
+        return "Version 3";
     }
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootMvcApplication.class, args);
