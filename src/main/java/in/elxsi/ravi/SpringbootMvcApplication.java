@@ -16,6 +16,11 @@ public class SpringbootMvcApplication {
         model.addAttribute("msg", "This application is deployed on to Kubernetes using Argo CD");
         return "index";
     }
+    @GetMapping("/home")
+    public String home() {
+
+        return "Version 2";
+    }
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootMvcApplication.class, args);
 	}
